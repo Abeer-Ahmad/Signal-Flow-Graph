@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by Salma.Ahmed on 18/04/2017.
  */
 public class Mason {
-    
+
     private ArrayList<String> forwardPaths;
     private ArrayList<String> loops;
     private ArrayList<Integer> combination ;
@@ -77,10 +77,29 @@ public class Mason {
             loopsCombination(1,i);
         }
     }
+    // returns an arraylist of loops non touching with a certain forward path.
+    private ArrayList<String> nonTouchingPath(String path){
+        boolean nonTouching=true;
+        ArrayList<String> nonTouchingLoops = new ArrayList<>();
+        char pathLetters[]=path.toCharArray();
+        for(int i=0;i<loops.size();i++){
+            for(int j=0;j<pathLetters.length;j++){
+            if(loops.get(i).indexOf(pathLetters[j])>=0){
+                nonTouching=false;
+                break;
+             }
+            }
+            if(nonTouching)
+                nonTouchingLoops.add(loops.get(i));
+        }
+        return nonTouchingLoops;
+    }
     public static void main(String[] args){
         Mason mason=new Mason();
         mason.fillLoops();
         mason.getCombinations();
-        System.out.println(mason.nonTouchingLoops);
+        System.out.println(mason.nonTouchingPath("opq"));
+        //System.out.println(mason.nonTouchingLoops);
+
     }
 }
