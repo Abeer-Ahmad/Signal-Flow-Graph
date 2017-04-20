@@ -6,29 +6,44 @@ import java.util.ArrayList;
  * Created by Salma.Ahmed on 18/04/2017.
  */
 public class Mason {
-
-    ArrayList<Integer> forwardPaths = new ArrayList<>();
-    ArrayList<Integer> loops = new ArrayList<>();
-    ArrayList<Integer> combination = new ArrayList<>();
-    private void fillLoops(){
-        for(int i=1;i<=3;i++)
-           loops.add(i);
+    
+    private ArrayList<String> forwardPaths;
+    private ArrayList<String> loops;
+    private ArrayList<Integer> combination ;
+    /* Arraylist to hold valid non touching loops in ascending order ..
+   eg. : all 2 non touching loops then all 3 non touching loops and so on..
+    */
+    private ArrayList<ArrayList<String>> nonTouchingLoops;
+    /* constructor*/
+    private Mason() {
+        forwardPaths = new ArrayList<>();
+        loops = new ArrayList<>();
+        combination = new ArrayList<>();
+        nonTouchingLoops = new ArrayList<>();
     }
-    private void print(int length){
-        System.out.println(combination.size());
+    /* a temporary function to fill the arraylist of loops*/
+    private void fillLoops(){
+           loops.add("abc");
+           loops.add("bdef");
+           loops.add("xyz");
+           loops.add("m");
+    }
+
+    /* adds non touching loops to an arraylist to be used in calculations later*/
+    private void addNonTouching(int length){
+        ArrayList<String> nonTouchingComb = new ArrayList<>();
         for(int i=0;i<length;i++){
-            System.out.print(combination.get(i)+" ");
+            nonTouchingComb.add(loops.get(combination.get(i)-1));
         }
-        System.out.println();
+        nonTouchingLoops.add(nonTouchingComb);
     }
 
     /*length is the length of the combination*/
     private void loopsCombination(int x,int length){
         if(combination.size()==length){
-            /*if(isNonTouching()){
-               // print();
-            }*/
-            print(length);
+            if(isNonTouching(combination)){
+               addNonTouching(length);
+            }
             return;
         }
         for(int i=x;i<=loops.size();i++){
@@ -37,10 +52,25 @@ public class Mason {
             combination.remove(combination.size()-1);
         }
     }
-    //checks if a certain loop is non touching to a certain forward path
-    /*private boolean isNonTouching(ArrayList<String> loop){
+    //checks if a group of loops are non touching to each other given their index in loops array.
+    //7ngeb el index deh b2a mn el combinations ely 3mltlhom generation
+    private boolean isNonTouching(ArrayList<Integer> loopsIndex){
+        boolean nonTouching=true;
+       for(int i=0;i<loopsIndex.size()&&nonTouching == true;i++) {
+           for(int j=i+1;j<loopsIndex.size()&&nonTouching == true;j++){
+             char letters[]=loops.get(loopsIndex.get(j)-1).toCharArray();
+             for(int k=0;k<letters.length;k++){
+                 if(loops.get(loopsIndex.get(i)-1).indexOf(letters[k])>=0){
+                     nonTouching = false;
+                     break;
+                 }
+             }
 
-    }*/
+           }
+       }
+      return nonTouching;
+
+    }
     // loops to get combinations of different lengths
     private void getCombinations(){
         for(int i=2;i<=loops.size();i++){
@@ -51,5 +81,6 @@ public class Mason {
         Mason mason=new Mason();
         mason.fillLoops();
         mason.getCombinations();
+        System.out.println(mason.nonTouchingLoops);
     }
 }
