@@ -1,23 +1,13 @@
-package gui;
+package src.gui;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Font;
-import java.awt.Canvas;
-
-import org.graphstream.graph.*;
-import org.graphstream.graph.implementations.*;
-import org.graphstream.ui.view.View;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.Node;
+import org.graphstream.graph.implementations.MultiGraph;
+import org.graphstream.ui.swingViewer.ViewPanel;
 import org.graphstream.ui.view.Viewer;
-import org.graphstream.ui.view.ViewerListener;
-import org.graphstream.ui.view.ViewerPipe;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class UI  extends JFrame {
 
@@ -58,7 +48,10 @@ public class UI  extends JFrame {
 		frame.setBounds(100, 100, 726, 457);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
+		JPanel panel = new JPanel(null);
+		panel.setVisible(true);
+
 		textField = new JTextField();
 		textField.setBounds(140, 36, 46, 20);
 		frame.getContentPane().add(textField);
@@ -115,12 +108,17 @@ public class UI  extends JFrame {
 		frame.getContentPane().add(btnSolve);
 		
 		Graph graph = new MultiGraph("SFG");
-		Viewer viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
-		// Viewer viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
-		View view = viewer.addDefaultView(true);   // false indicates "no JFrame".
-		// View view = viewer.getDefaultView();
-		
-		
+		//Viewer viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
+		Viewer viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
+//		View view = viewer.addDefaultView(false);   // false indicates "no JFrame".
+//
+		viewer.enableAutoLayout();
+		ViewPanel view =  viewer.addDefaultView(false);   // false indicates "no JFrame".
+		view.setSize(400,400);
+		view.setLocation(0, 120);
+		panel.add( view);
+		frame.add(panel);
+		frame.getContentPane().setBackground(Color.white );
 		graph.addNode("A" );
         Node node = graph.getNode("A");
         node.setAttribute("xy", 1, 3);
@@ -133,9 +131,8 @@ public class UI  extends JFrame {
         graph.addEdge("AB", "A", "B");
         graph.addEdge("BC", "B", "C");
         graph.addEdge("CA", "C", "A");
-        // graph.display(false);
-		
-        // System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
+        //graph.display(false);
+
 		frame.getContentPane().add((Component) view);
 	}
 }
