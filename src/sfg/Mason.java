@@ -23,7 +23,7 @@ public class Mason {
         nonTouchingLoops = new ArrayList<>();
     }
 
-    /* a temporary function to fill the arraylist of loops*/
+    /* a temporary function to fill the ArrayList of loops*/
     private void fillLoops() {
         loops.add("abc");
         loops.add("bdef");
@@ -31,7 +31,7 @@ public class Mason {
         loops.add("m");
     }
 
-    /* adds non touching loops to an arraylist to be used in calculations later*/
+    /* adds non touching loops to an ArrayList to be used in calculations later*/
     private void addNonTouching(int length) {
         ArrayList<String> nonTouchingComb = new ArrayList<>();
         for (int i = 0; i < length; i++) {
