@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="H:/Lynda.com - Java Essential Training (Dec. 2011)/JAVA programs/SFG/src/jars/gs-algo-1.3.jar"/>
+	<classpathentry kind="lib" path="H:/Lynda.com - Java Essential Training (Dec. 2011)/JAVA programs/SFG/src/jars/gs-algo-1.3-javadoc.jar"/>
+	<classpathentry kind="lib" path="H:/Lynda.com - Java Essential Training (Dec. 2011)/JAVA programs/SFG/src/jars/gs-algo-1.3-sources.jar"/>
+	<classpathentry kind="lib" path="H:/Lynda.com - Java Essential Training (Dec. 2011)/JAVA programs/SFG/src/jars/gs-core-1.3.jar"/>
+	<classpathentry kind="lib" path="H:/Lynda.com - Java Essential Training (Dec. 2011)/JAVA programs/SFG/src/jars/gs-core-1.3-javadoc.jar"/>
+	<classpathentry kind="lib" path="H:/Lynda.com - Java Essential Training (Dec. 2011)/JAVA programs/SFG/src/jars/gs-core-1.3-sources.jar"/>
+	<classpathentry kind="lib" path="H:/Lynda.com - Java Essential Training (Dec. 2011)/JAVA programs/SFG/src/jars/gs-ui-1.3.jar"/>
+	<classpathentry kind="lib" path="H:/Lynda.com - Java Essential Training (Dec. 2011)/JAVA programs/SFG/src/jars/gs-ui-1.3-javadoc.jar"/>
+	<classpathentry kind="lib" path="H:/Lynda.com - Java Essential Training (Dec. 2011)/JAVA programs/SFG/src/jars/gs-ui-1.3-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
