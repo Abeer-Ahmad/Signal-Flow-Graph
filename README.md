@@ -21,3 +21,6 @@
 Then click the “Add” button.  
 ● Determine both source and sink nodes in the boxes labeled “Source”, “Sink” correspondingly.  
 ● To solve the SFG and analyse the system, click the “Solve” button.  
+
+# Credits:
+● Graphstream library for drawing graphs ( http://graphstream-project.org/ ).    
